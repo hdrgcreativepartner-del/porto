@@ -60,7 +60,7 @@
       const projectCategories = selectedCategories.length ? [...new Set(selectedCategories)] : ['design'];
       const cover = images.includes(metadata.cover) ? metadata.cover : images.find(name => /^cover\./i.test(name)) || images[0];
       const annotations = Array.isArray(metadata.images) ? metadata.images.filter(item => item && images.includes(item.file)) : [];
-      const ordered = [...new Set([...annotations.map(item => item.file), ...images.filter(name => !/^cover\./i.test(name))])];
+      const ordered = [...new Set([...annotations.map(item => item.file), ...images.filter(name => !/^cover\./i.test(name) && (name !== cover || !annotations.length))])];
       if (!ordered.length) ordered.push(cover);
       const gallery = ordered.map((name, number) => {
         const info = annotations.find(item => item.file === name) || {};
