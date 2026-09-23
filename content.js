@@ -1,5 +1,5 @@
-/* Konten portofolio. Tambahkan karya baru di daftar projects, lalu unggah asetnya
-   ke assets/work/. Semua alamat aset relatif agar bekerja di GitHub Pages. */
+/* Kontak dan katalog cadangan. Konten aktif dibaca otomatis dari assets/portfolio/.
+   Gunakan panel admin atau PANDUAN-UPLOAD.md untuk memperbarui karya. */
 window.HDRG = {
   whatsapp: '6285746894195',
   projects: [

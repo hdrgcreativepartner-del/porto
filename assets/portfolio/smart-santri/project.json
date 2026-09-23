@@ -1,0 +1,33 @@
+{
+  "title": "Smart Santri",
+  "subtitle": "A thoughtful digital learning space.",
+  "year": "2026",
+  "categories": [
+    "digital"
+  ],
+  "label": "Web app · Education",
+  "type": "Prototipe",
+  "layout": "digital",
+  "cover": "cover.webp",
+  "alt": "Tampilan landing page Smart Santri, portal digital sekolah",
+  "summary": "Ruang digital yang mempertemukan absensi, pembelajaran, dan informasi sekolah dalam satu pengalaman yang mudah dipahami.",
+  "description": "Pengembangan prototipe aplikasi sekolah dengan landing page, absensi siswa dan guru, ruang belajar, materi dan tugas, ekstrakurikuler, serta kabar sekolah. Dirancang untuk menjembatani kebutuhan sekolah dan keseharian penggunanya.",
+  "scope": [
+    "Landing page & antarmuka",
+    "Struktur portal sekolah",
+    "Prototipe aplikasi web"
+  ],
+  "note": "Status: prototipe / trial. Tangkapan layar menampilkan versi percobaan dengan data contoh, bukan sistem produksi yang telah terimplementasi di sekolah.",
+  "link": {
+    "url": "https://github.com/hdrgcreativepartner-del/smartsantri",
+    "label": "Lihat proyek di GitHub"
+  },
+  "images": [
+    {
+      "file": "01-smart-santri.webp",
+      "alt": "Pratinjau halaman beranda Smart Santri"
+    }
+  ],
+  "order": 4,
+  "published": true
+}

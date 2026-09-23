@@ -1,0 +1,30 @@
+{
+  "title": "Stage & Visual Experience",
+  "subtitle": "A bigger canvas for ideas.",
+  "year": "2026",
+  "categories": [
+    "event",
+    "lab"
+  ],
+  "label": "Stage visualization · Concept",
+  "type": "Konsep",
+  "layout": "stage",
+  "cover": "cover.webp",
+  "alt": "Konsep panggung bergerak dengan susunan LED dan pencahayaan merah",
+  "summary": "Eksplorasi hubungan antara panggung, susunan LED, pencahayaan, dan penonton dalam satu pengalaman visual.",
+  "description": "Visualisasi membantu membayangkan komposisi panggung sebelum masuk ke pengembangan teknis. Studi ini berfokus pada bentuk, pembagian layar, dan atmosfer acara sebagai bahan diskusi arah kreatif.",
+  "scope": [
+    "Konsep komposisi panggung",
+    "Eksplorasi tata letak LED",
+    "AI-assisted visualization"
+  ],
+  "note": "Visualisasi konsep berbantuan AI, bukan foto acara yang telah diproduksi atau gambar kerja konstruksi.",
+  "images": [
+    {
+      "file": "01-stage-concept.webp",
+      "alt": "Visualisasi utuh konsep panggung bergerak dengan LED"
+    }
+  ],
+  "order": 5,
+  "published": true
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Mechanical Elephant",
+  "subtitle": "Power, reimagined.",
+  "year": "2026",
+  "categories": [
+    "lab"
+  ],
+  "label": "AI art direction · Character exploration",
+  "type": "Creative Lab",
+  "layout": "elephant",
+  "cover": "cover.webp",
+  "alt": "Gajah mekanis sinematik dengan aksen emas",
+  "summary": "Pertemuan karakter organik dan estetika teknologi. Eksplorasi karakter yang dirancang untuk menarik perhatian sejak pandangan pertama.",
+  "description": "Detail metal, cahaya keemasan, dan komposisi simetris membangun karakter yang kuat dan dramatis. Studi ini mengeksplorasi potensi visual berbantuan AI sebagai titik awal pengembangan aset kreatif.",
+  "scope": [
+    "Konsep karakter",
+    "AI art direction & prompting",
+    "Eksplorasi atmosfer sinematik"
+  ],
+  "note": "Eksplorasi visual berbantuan AI. Gambar diam, bukan cuplikan animasi atau dokumentasi produksi.",
+  "images": [
+    {
+      "file": "01-mechanical-elephant.webp",
+      "alt": "Detail keseluruhan karakter Mechanical Elephant"
+    }
+  ],
+  "order": 3,
+  "published": true
+}

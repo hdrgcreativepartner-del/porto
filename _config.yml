@@ -1,0 +1,16 @@
+title: HDRG Creative Partner
+url: https://hdrgcreativepartner-del.github.io
+baseurl: /porto
+encoding: UTF-8
+markdown: kramdown
+exclude:
+  - README.md
+  - PANDUAN-UPLOAD.md
+  - assets/clients/README.md
+  - assets/portfolio/README.md
+  - assets/portfolio/_template
+  - scripts
+  - node_modules
+  - package.json
+  - package-lock.json
+

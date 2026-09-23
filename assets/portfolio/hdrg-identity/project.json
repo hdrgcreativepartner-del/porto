@@ -1,0 +1,41 @@
+{
+  "title": "HDRG Creative Partner",
+  "subtitle": "An identity, with purpose.",
+  "year": "IDENTITY",
+  "categories": [
+    "design"
+  ],
+  "label": "Brand identity · Own brand",
+  "type": "Identitas brand",
+  "layout": "identity",
+  "cover": "cover.png",
+  "alt": "Logo resmi HDRG Creative Partner",
+  "summary": "Satu identitas untuk berbagai disiplin kreatif. Sistem logo HDRG Creative Partner dalam versi utama dan monokrom.",
+  "description": "Identitas HDRG membawa pendekatan yang tegas dan fleksibel. Simbol yang ringkas berpadu dengan wordmark untuk penggunaan pada media digital, materi publikasi, dan kebutuhan presentasi.",
+  "scope": [
+    "Identitas HDRG Creative Partner",
+    "Logo utama",
+    "Aplikasi logo monokrom"
+  ],
+  "note": "Menggunakan aset logo resmi HDRG yang disediakan oleh pemilik brand.",
+  "images": [
+    {
+      "file": "01-hdrg-color.png",
+      "alt": "Logo utama HDRG Creative Partner",
+      "className": "logo-on-dark"
+    },
+    {
+      "file": "02-hdrg-white.png",
+      "alt": "Logo putih HDRG Creative Partner",
+      "className": "logo-on-blue"
+    },
+    {
+      "file": "03-hdrg-black.png",
+      "alt": "Logo hitam HDRG Creative Partner",
+      "className": "logo-on-white"
+    }
+  ],
+  "order": 6,
+  "published": true,
+  "client": "HDRG Creative Partner"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Nama proyek Anda",
+  "subtitle": "Satu kalimat tentang proyek",
+  "client": "Nama klien",
+  "year": "2026",
+  "categories": ["design"],
+  "type": "Proyek",
+  "label": "Brand identity · Graphic design",
+  "summary": "Ringkasan tujuan proyek.",
+  "description": "Cerita tentang tantangan, pendekatan, dan proses kreatif.",
+  "scope": ["Brand identity", "Desain publikasi"],
+  "note": "Kredit foto, kolaborator, atau keterangan lain bila diperlukan.",
+  "cover": "cover.webp",
+  "order": 0,
+  "published": true,
+  "images": []
+}

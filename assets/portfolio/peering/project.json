@@ -1,0 +1,30 @@
+{
+  "title": "Make Peering Great Again",
+  "subtitle": "A message with character.",
+  "year": "2026",
+  "categories": [
+    "design",
+    "lab"
+  ],
+  "label": "Typography · Creative exploration",
+  "type": "Eksplorasi",
+  "layout": "peering",
+  "cover": "cover.webp",
+  "alt": "Eksplorasi tipografi Make Peering Great Again hitam di atas putih",
+  "summary": "Pesan singkat dengan kepribadian yang kuat. Eksplorasi tipografi untuk semangat kolaborasi komunitas peering.",
+  "description": "Permainan bentuk, ritme, dan skala huruf menghadirkan komposisi yang ekspresif. Eksplorasi ini menguji bagaimana sebuah pesan komunitas bisa tampil sebagai visual yang punya karakter sendiri.",
+  "scope": [
+    "Eksplorasi tipografi",
+    "Arah visual kampanye",
+    "AI-assisted creative exploration"
+  ],
+  "note": "Karya eksplorasi visual berbantuan AI. Ditampilkan sebagai studi konsep, bukan klaim aplikasi final pada acara atau merchandise.",
+  "images": [
+    {
+      "file": "01-peering.webp",
+      "alt": "Komposisi lengkap eksplorasi tipografi Make Peering Great Again"
+    }
+  ],
+  "order": 2,
+  "published": true
+}

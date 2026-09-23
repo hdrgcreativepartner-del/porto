@@ -1,14 +1,12 @@
 'use strict';
 
 (() => {
-  const { projects, whatsapp } = window.HDRG;
+  let projects = window.HDRG.projects;
+  const { whatsapp } = window.HDRG;
   const grid = document.querySelector('#project-grid');
-  const dialog = document.querySelector('#project-dialog');
-  const dialogContent = document.querySelector('#dialog-content');
   const menu = document.querySelector('#main-nav');
   const menuToggle = document.querySelector('.menu-toggle');
   const form = document.querySelector('#brief-form');
-  let lastProjectTrigger = null;
 
   function element(tag, className, text) {
     const node = document.createElement(tag);
@@ -49,11 +47,10 @@
     const visible = projects.filter(p => filter === 'all' || p.categories.includes(filter));
     const cards = visible.map(project => {
       const card = element('article', 'project-card');
-      const button = element('button', 'project-open');
-      button.type = 'button';
+      const button = element('a', 'project-open');
+      button.href = './project.html?id=' + encodeURIComponent(project.id);
       button.dataset.project = project.id;
       button.setAttribute('aria-label', 'Lihat detail ' + project.title);
-      button.setAttribute('aria-haspopup', 'dialog');
       const media = element('div', 'project-media media-' + project.layout);
       media.append(projectImage(project.cover, project.alt, project.layout === 'posters' ? 'poster-one' : ''));
       if (project.secondary) media.append(projectImage(project.secondary, '', 'poster-two'));
@@ -71,39 +68,9 @@
       return card;
     });
     grid.replaceChildren(...cards);
+    if (!cards.length) grid.append(element('p', 'gallery-empty', 'Belum ada karya dalam kategori ini.'));
+    document.querySelector('.filter[data-filter="all"] span').textContent = String(projects.length).padStart(2, '0');
     document.querySelector('#project-count').textContent = visible.length + ' karya';
-  }
-
-  function openProject(id, trigger) {
-    const project = projects.find(p => p.id === id);
-    if (!project) return;
-    lastProjectTrigger = trigger;
-    const header = element('div', 'dialog-header');
-    const title = element('h2', '', project.title);
-    title.id = 'dialog-title';
-    header.append(element('p', 'dialog-kicker', project.type + ' / ' + project.year + ' / ' + project.label), title, element('p', 'dialog-summary', project.summary));
-    const details = element('div', 'dialog-details');
-    const scope = element('div');
-    const list = element('ul');
-    project.scope.forEach(item => list.append(element('li', '', item)));
-    scope.append(element('h3', '', 'Lingkup kreatif'), list);
-    details.append(element('p', '', project.description), scope);
-    const gallery = element('div', 'dialog-gallery' + (project.images.length === 1 ? ' single' : ''));
-    project.images.forEach(image => {
-      const figure = element('figure');
-      figure.append(projectImage(image.src, image.alt, image.className));
-      gallery.append(figure);
-    });
-    const actions = element('div', 'dialog-actions');
-    const inquiry = 'Halo HDRG Creative Partner, saya tertarik dengan karya ' + project.title + '. Saya ingin berdiskusi tentang kebutuhan proyek saya.';
-    actions.append(externalLink('https://wa.me/' + whatsapp + '?text=' + encodeURIComponent(inquiry), 'Diskusikan ide serupa', 'button button-blue'));
-    if (project.link) actions.append(externalLink(project.link.url, project.link.label));
-    dialogContent.replaceChildren(header, details, gallery, element('p', 'dialog-note', project.note), actions);
-    if (menu.classList.contains('open')) setMenu(false);
-    document.body.classList.add('modal-open');
-    dialog.showModal();
-    dialog.scrollTop = 0;
-    dialog.querySelector('.dialog-close').focus({ preventScroll: true });
   }
 
   function setMenu(open, returnFocus = false) {
@@ -125,21 +92,6 @@
       item.setAttribute('aria-pressed', String(selected));
     });
     renderProjects(button.dataset.filter);
-  });
-
-  document.addEventListener('click', event => {
-    const trigger = event.target.closest('[data-project]');
-    if (trigger) openProject(trigger.dataset.project, trigger);
-  });
-  document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => {
-    if (event.target !== dialog) return;
-    const bounds = dialog.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
-  });
-  dialog.addEventListener('close', () => {
-    document.body.classList.remove('modal-open');
-    if (lastProjectTrigger?.isConnected) lastProjectTrigger.focus({ preventScroll: true });
   });
 
   menuToggle.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
@@ -200,4 +152,19 @@
   document.querySelector('.filter[data-filter="all"] span').textContent = String(projects.length).padStart(2, '0');
   document.querySelectorAll('[data-whatsapp]').forEach(link => { link.href = 'https://wa.me/' + whatsapp; });
   renderProjects();
+  window.HDRGCatalog.then(catalog => {
+    projects = catalog.projects;
+    renderProjects(document.querySelector('.filter.active')?.dataset.filter || 'all');
+    if (catalog.clients.length) {
+      const logos = document.querySelector('#client-logos');
+      catalog.clients.forEach(client => {
+        const card = element('div', 'client-logo' + (client.dark ? ' client-logo-dark' : ''));
+        const img = projectImage(client.src, client.name);
+        card.append(img);
+        logos.append(card);
+      });
+      logos.hidden = false;
+      document.querySelector('.experience-names').hidden = true;
+    }
+  });
 })();

@@ -1,0 +1,44 @@
+{
+  "title": "IDNOG 11",
+  "subtitle": "Connecting networks. Creating impact.",
+  "year": "2026",
+  "categories": [
+    "design",
+    "event"
+  ],
+  "label": "Event visual · Campaign design",
+  "type": "Proyek",
+  "layout": "posters",
+  "cover": "cover.webp",
+  "secondary": "03-idnog-conference.webp",
+  "alt": "Desain publikasi pembicara dan dokumentasi konferensi IDNOG 11",
+  "summary": "Bahasa visual yang konsisten untuk pertemuan komunitas operator jaringan Indonesia—dari komunikasi sebelum acara sampai momen di atas panggung.",
+  "description": "Pengembangan materi publikasi, konten sosial media, dan visual acara untuk IDNOG 11 serta Peering Nusantara 2. Pendekatan visual mempertemukan karakter teknologi dengan informasi yang jelas dan mudah dikenali.",
+  "scope": [
+    "Desain materi publikasi & speaker",
+    "Konten dan perencanaan sosial media",
+    "Bumper opening & visual acara"
+  ],
+  "note": "Galeri menampilkan materi publikasi dan layout dokumentasi acara. Foto di dalam layout merupakan dokumentasi kegiatan IDNOG; lingkup yang ditampilkan di sini adalah pengolahan desain dan komunikasi visual.",
+  "images": [
+    {
+      "file": "01-idnog-speaker.webp",
+      "alt": "Materi speaker Gideon Hoe untuk IDNOG 11"
+    },
+    {
+      "file": "02-idnog-speaker-nokia.webp",
+      "alt": "Materi speaker Songkhram Sundaranu untuk IDNOG 11"
+    },
+    {
+      "file": "03-idnog-conference.webp",
+      "alt": "Layout dokumentasi konferensi hari pertama"
+    },
+    {
+      "file": "04-idnog-event.webp",
+      "alt": "Layout dokumentasi opening speech IDNOG 11"
+    }
+  ],
+  "order": 1,
+  "published": true,
+  "client": "IDNOG"
+}
