@@ -29,3 +29,8 @@ Format JPG / PNG / WebP / AVIF / SVG. Target cover di bawah 500 KB dan detail di
 Enam folder proyek yang sudah terisi adalah karya dan eksplorasi yang sebelumnya sudah ada pada website HDRG, dipindahkan ke struktur ini agar bisa diedit melalui panel.
 
 [Panduan lengkap](../../PANDUAN-UPLOAD.md)
+
+
+## Video
+
+Panel admin menerima tautan YouTube serta unggahan MP4/WebM (maksimum 25 MB per video, total media baru 50 MB per simpan). Gunakan cover gambar 1600 × 1200 px. Foto dan video dapat diurutkan bersama melalui bagian **Foto & video**. Untuk video panjang, gunakan YouTube. Lihat [panduan video](../../PANDUAN-UPLOAD.md#menambahkan-video). File MP4/WebM yang diunggah langsung ke folder proyek juga ditemukan otomatis.

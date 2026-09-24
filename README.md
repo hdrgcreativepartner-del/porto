@@ -10,7 +10,7 @@ Landing page dan portofolio resmi HDRG Creative Partner, dengan halaman studi ka
 
 ## Update konten
 
-Gunakan panel admin untuk menambah/edit karya, mengunggah cover, mengurutkan gambar, menulis caption, dan mengelola logo. Login menggunakan fine-grained GitHub token untuk repo `porto` dengan izin Contents read/write. Token hanya berada di memori tab; tidak ada token atau password yang disimpan dalam repo.
+Gunakan panel admin untuk menambah/edit karya, mengunggah cover, mengurutkan foto/video, menambahkan embed YouTube, menulis caption, dan mengelola logo. Login menggunakan fine-grained GitHub token untuk repo `porto` dengan izin Contents read/write. Token hanya berada di memori tab; tidak ada token atau password yang disimpan dalam repo.
 
 Alternatif: unggah langsung ke folder GitHub dan commit ke `main`. Satu folder per proyek; `cover.webp`, `01.webp`, `02.webp`, serta `project.json` opsional. GitHub Pages membuat indeks unggahan otomatis pada setiap publikasi. Karya baru tidak memerlukan perubahan kode.
 
@@ -34,6 +34,7 @@ Pengaturan: **Settings → Pages → Deploy from a branch → main → / (root)*
 | --- | --- |
 | `index.html`, `styles.css`, `app.js` | Landing page, galeri, filter, menu mobile, draft WhatsApp |
 | `project.html`, `project.js` | Studi kasus vertikal, perbesar gambar, tautan proyek |
+| `media.js` | Validasi URL YouTube, format media, dan pembuatan player |
 | `catalog.js`, `media-index.json` | Membaca folder unggahan otomatis |
 | `content.js` | Nomor WhatsApp dan katalog cadangan bila indeks tidak tersedia |
 | `admin/` | Editor konten dan klien; autentikasi GitHub melalui token |
@@ -46,8 +47,13 @@ Admin membaca kondisi terbaru dari GitHub, menyimpan semua perubahan sebagai sat
 
 ## Identitas dan konteks
 
-Identitas biru `#2563eb`, logo asli HDRG Creative Partner, tagline “From ideas to visual experiences.” Kontak: +62 857 4689 4195, hdrg.creativepartner@gmail.com, @hdrg.creativepartner. Berbasis di Jember sejak 2012.
+Identitas biru `#245eec`, logo asli HDRG Creative Partner, tagline “From ideas to visual experiences.” Kontak: +62 857 4689 4195, hdrg.creativepartner@gmail.com, @hdrg.creativepartner. Berbasis di Jember sejak 2012.
 
 Materi IDNOG menampilkan desain publikasi/layout dokumentasi, bukan klaim kepemilikan fotografi di dalamnya. Mechanical Elephant, tipografi Peering, dan visualisasi panggung diberi penjelasan sebagai eksplorasi berbantuan AI. Smart Santri berstatus prototipe. Tidak ada testimoni, klien, atau angka hasil baru yang dikarang. Logo klien menunggu aset resmi dari pemilik.
 
 Hak atas logo dan materi visual tetap pada pemilik masing-masing. Tidak ada lisensi open-source untuk aset visual. Form brief membuka draft WhatsApp tanpa mengirim otomatis atau menyimpan data formulir.
+
+
+## Pemeriksaan media
+
+Jalankan `node --test tests/media.test.cjs` untuk memeriksa validasi tautan YouTube, urutan campuran, penemuan video, dan kompatibilitas metadata gambar lama.

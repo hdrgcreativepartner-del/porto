@@ -3,7 +3,7 @@
 /* GitHub Pages generates media-index.json from the files uploaded to the repo.
    No GitHub token, public API request, or manual project list is needed. */
 (() => {
-  const imageFile = /\.(?:avif|jpe?g|png|webp|svg)$/i;
+  const { imagePattern: imageFile, items: mediaItems } = window.HDRGMedia;
   const categories = ['design', 'event', 'digital', 'lab'];
   const layouts = ['standard', 'posters', 'peering', 'elephant', 'digital', 'stage', 'identity'];
   const imageClasses = ['logo-on-dark', 'logo-on-blue', 'logo-on-white'];
@@ -46,7 +46,6 @@
 
     const projects = await Promise.all([...groups].map(async ([id, filenames]) => {
       const images = filenames.filter(name => imageFile.test(name)).sort(natural);
-      if (!images.length) return null;
       const prefix = 'assets/portfolio/' + id + '/';
       let metadata = {};
       if (filenames.includes('project.json')) {
@@ -59,18 +58,15 @@
       const selectedCategories = Array.isArray(metadata.categories) ? metadata.categories.filter(c => categories.includes(c)) : [];
       const projectCategories = selectedCategories.length ? [...new Set(selectedCategories)] : ['design'];
       const cover = images.includes(metadata.cover) ? metadata.cover : images.find(name => /^cover\./i.test(name)) || images[0];
-      const annotations = Array.isArray(metadata.images) ? metadata.images.filter(item => item && images.includes(item.file)) : [];
-      const ordered = [...new Set([...annotations.map(item => item.file), ...images.filter(name => !/^cover\./i.test(name) && (name !== cover || !annotations.length))])];
-      if (!ordered.length) ordered.push(cover);
-      const gallery = ordered.map((name, number) => {
-        const info = annotations.find(item => item.file === name) || {};
-        return {
-          src: assetURL(prefix + name),
-          alt: text(info.alt, title + ' — visual ' + (number + 1)),
-          caption: text(info.caption),
-          className: imageClasses.includes(info.className) ? info.className : ''
-        };
-      });
+      const media = mediaItems(metadata, filenames).map((item, number) => ({
+        ...item,
+        ...(item.file ? { src: assetURL(prefix + item.file) } : {}),
+        alt: item.alt || title + ' — visual ' + (number + 1),
+        title: item.title || title + ' — video ' + (number + 1),
+        className: imageClasses.includes(item.className) ? item.className : ''
+      }));
+      if (!media.length) return null;
+      const gallery = media.filter(item => item.type === 'image');
       let link;
       try {
         const url = new URL(metadata.link?.url);
@@ -83,11 +79,11 @@
         label: text(metadata.label, projectCategories.map(c => labels[c]).join(' · ')),
         type: text(metadata.type, 'Proyek'),
         layout: layouts.includes(metadata.layout) ? metadata.layout : 'standard',
-        cover: assetURL(prefix + cover), alt: text(metadata.alt, title),
+        cover: cover ? assetURL(prefix + cover) : '', alt: text(metadata.alt, title),
         secondary: images.includes(metadata.secondary) ? assetURL(prefix + metadata.secondary) : undefined,
         summary: text(metadata.summary), description: text(metadata.description), note: text(metadata.note),
         scope: Array.isArray(metadata.scope) ? metadata.scope.filter(item => typeof item === 'string') : [],
-        images: gallery, link,
+        images: gallery, media, hasVideo: media.some(item => item.type !== 'image'), link,
         order: Number.isFinite(metadata.order) ? metadata.order : 0
       };
     }));
@@ -102,3 +98,4 @@
     return { projects: window.HDRG.projects, clients: [], fallback: true };
   });
 })();
+

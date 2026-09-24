@@ -34,36 +34,55 @@
     document.title = project.title + ' — HDRG Creative Partner';
     document.querySelector('meta[name="description"]').content = project.summary || project.title;
     const intro = el('section', 'case-intro container');
-    intro.append(el('p', 'eyebrow', '/ PROJECT STORY'));
+    intro.append(el('p', 'eyebrow', 'PROJECT / ' + project.type.toUpperCase()));
     const heading = el('div', 'case-heading');
     const title = el('div'); title.append(el('h1', '', project.title));
     if (project.subtitle) title.append(el('p', 'case-subtitle', project.subtitle));
     const facts = el('dl', 'case-facts');
-    [['Disiplin', project.label], ['Kategori', project.type], ['Klien / brand', project.client], ['Tahun', project.year]].forEach(([label, value]) => {
+    [['Layanan', project.label], ['Klien', project.client], ['Tahun', project.year]].forEach(([label, value]) => {
       if (!value) return;
       const item = el('div'); item.append(el('dt', '', label), el('dd', '', value)); facts.append(item);
     });
     heading.append(title, facts); intro.append(heading);
-    const overview = el('div', 'case-overview');
-    if (project.summary) overview.append(el('p', 'case-summary', project.summary));
-    const detail = el('div');
-    if (project.description) detail.append(el('p', '', project.description));
-    if (project.scope.length) { const scope = el('ul', 'case-scope'); project.scope.forEach(item => scope.append(el('li', '', item))); detail.append(scope); }
-    overview.append(detail); intro.append(overview);
+    if (project.summary) intro.append(el('p', 'case-summary', project.summary));
+    if (project.description || project.scope.length) {
+      const details = el('details', 'case-details');
+      details.append(el('summary', '', 'Tentang proyek'));
+      const copy = el('div', 'case-details-copy');
+      if (project.description) copy.append(el('p', '', project.description));
+      if (project.scope.length) { const scope = el('ul', 'case-scope'); project.scope.forEach(item => scope.append(el('li', '', item))); copy.append(scope); }
+      details.append(copy); intro.append(details);
+    }
     const gallery = el('section', 'case-gallery'); gallery.setAttribute('aria-label', 'Galeri ' + project.title);
-    images.forEach((image, index) => {
+    const media = project.media || project.images.map(image => ({ ...image, type: 'image' }));
+    media.forEach((item, index) => {
       const figure = el('figure', 'case-figure');
-      const button = el('button', 'case-image-button'); button.type = 'button'; button.setAttribute('aria-label', 'Perbesar gambar ' + (index + 1) + ': ' + image.alt);
-      const img = el('img', image.className); img.src = image.src; img.alt = image.alt; img.loading = index === 0 ? 'eager' : 'lazy'; img.decoding = 'async';
-      button.append(img, el('span', 'image-enlarge', '↗ Perbesar'));
-      button.addEventListener('click', () => { lastTrigger = button; showImage(index); document.body.classList.add('modal-open'); viewer.showModal(); document.querySelector('#viewer-close').focus(); });
-      figure.append(button);
-      if (image.caption) figure.append(el('figcaption', '', image.caption));
+      if (item.type === 'youtube' || item.type === 'video') {
+        const wrap = el('div', 'case-video' + (item.aspect === 'portrait' ? ' portrait' : ''));
+        if (item.type === 'youtube') {
+          const iframe = window.HDRGMedia.frame(item); if (!iframe) return; wrap.append(iframe); figure.append(wrap);
+          const external = link(item.url, 'Buka di YouTube ↗', 'video-source'); external.target = '_blank'; external.rel = 'noopener noreferrer'; figure.append(external);
+        } else {
+          const video = el('video'); video.src = item.src; video.controls = true; video.playsInline = true; video.preload = 'none';
+          video.setAttribute('aria-label', item.title || project.title); if (project.cover) video.poster = project.cover;
+          video.append(document.createTextNode('Browser Anda belum mendukung pemutaran video.')); wrap.append(video); figure.append(wrap);
+          const external = link(item.src, 'Buka file video ↗', 'video-source'); external.target = '_blank'; external.rel = 'noopener noreferrer'; figure.append(external);
+          video.addEventListener('play', () => gallery.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); }));
+        }
+      } else {
+        const imageIndex = images.findIndex(image => image.src === item.src);
+        const button = el('button', 'case-image-button'); button.type = 'button'; button.setAttribute('aria-label', 'Perbesar gambar ' + (imageIndex + 1) + ': ' + item.alt);
+        const img = el('img', item.className); img.src = item.src; img.alt = item.alt; img.loading = index === 0 ? 'eager' : 'lazy'; img.decoding = 'async';
+        button.append(img, el('span', 'image-enlarge', '↗ Perbesar'));
+        button.addEventListener('click', () => { lastTrigger = button; showImage(imageIndex); document.body.classList.add('modal-open'); viewer.showModal(); document.querySelector('#viewer-close').focus(); });
+        figure.append(button);
+      }
+      if (item.caption) figure.append(el('figcaption', '', item.caption));
       gallery.append(figure);
     });
     const outro = el('section', 'case-outro container');
     if (project.note) outro.append(el('p', 'case-note', project.note));
-    const thanks = el('div', 'case-thanks'); thanks.append(el('span', 'eyebrow', '/ YOUR NEXT PROJECT'), el('h2', '', 'Giliran ide Anda.'));
+    const thanks = el('div', 'case-thanks'); thanks.append(el('h2', '', 'Punya ide serupa?'));
     const actions = el('div', 'case-actions');
     const inquiry = 'Halo HDRG Creative Partner, saya tertarik dengan karya ' + project.title + '. Saya ingin berdiskusi tentang kebutuhan proyek saya.';
     const contact = link('https://wa.me/' + window.HDRG.whatsapp + '?text=' + encodeURIComponent(inquiry), 'Diskusikan proyek ↗', 'button button-blue'); contact.target = '_blank'; contact.rel = 'noopener noreferrer'; actions.append(contact);
@@ -78,9 +97,10 @@
     const next = projects[(projects.indexOf(project) + 1) % projects.length];
     if (next && next.id !== project.id) {
       const nextLink = link('./project.html?id=' + encodeURIComponent(next.id), '', 'case-next');
-      nextLink.append(el('span', 'eyebrow', '/ NEXT PROJECT'), el('strong', '', next.title), el('span', 'next-arrow', '↗')); outro.append(nextLink);
+      nextLink.append(el('span', 'eyebrow', 'PROYEK BERIKUTNYA'), el('strong', '', next.title), el('span', 'next-arrow', '↗')); outro.append(nextLink);
     }
     root.replaceChildren(intro, gallery, outro);
     document.querySelector('#viewer-prev').hidden = images.length < 2; document.querySelector('#viewer-next').hidden = images.length < 2;
   });
 })();
+

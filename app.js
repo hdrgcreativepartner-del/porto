@@ -52,10 +52,9 @@
       button.dataset.project = project.id;
       button.setAttribute('aria-label', 'Lihat detail ' + project.title);
       const media = element('div', 'project-media media-' + project.layout);
-      media.append(projectImage(project.cover, project.alt, project.layout === 'posters' ? 'poster-one' : ''));
-      if (project.secondary) media.append(projectImage(project.secondary, '', 'poster-two'));
-      media.append(element('span', 'project-badge', project.type));
-      if (project.layout === 'identity') media.append(element('span', 'identity-tag', 'FROM IDEAS TO VISUAL EXPERIENCES.'));
+      if (project.cover) media.append(projectImage(project.cover, project.alt));
+      else { media.classList.add('media-placeholder'); media.append(element('span', '', project.title)); }
+      if (project.hasVideo) media.append(element('span', 'project-badge', '▶ Video'));
       const arrow = element('span', 'project-arrow');
       arrow.append(icon());
       media.append(arrow);
@@ -98,7 +97,7 @@
   menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
   document.querySelector('.brand').addEventListener('click', () => setMenu(false));
   document.querySelector('.header-contact').addEventListener('click', () => setMenu(false));
-  const desktop = window.matchMedia('(min-width: 621px)');
+  const desktop = window.matchMedia('(min-width: 761px)');
   desktop.addEventListener('change', event => { if (event.matches) setMenu(false); });
   document.addEventListener('keydown', event => {
     if (!menu.classList.contains('open')) return;
@@ -168,3 +167,4 @@
     }
   });
 })();
+

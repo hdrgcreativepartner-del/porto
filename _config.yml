@@ -14,3 +14,5 @@ exclude:
   - package.json
   - package-lock.json
 
+
+  - tests

@@ -45,7 +45,7 @@ window.HDRGGitHub = (() => {
     const bytes = Uint8Array.from(atob(blob.content.replace(/\s/g, '')), c => c.charCodeAt(0));
     return JSON.parse(new TextDecoder().decode(bytes));
   }
-  const managed = path => /^assets\/(?:clients\/[^/]+\.(?:png|jpe?g|webp|avif|svg)|portfolio\/[a-z0-9]+(?:-[a-z0-9]+)*\/(?:project\.json|[^/]+\.(?:png|jpe?g|webp|avif|svg)))$/i.test(path) && !path.split('/').some(part => /^[._]/.test(part));
+  const managed = path => /^assets\/(?:clients\/[^/]+\.(?:png|jpe?g|webp|avif|svg)|portfolio\/[a-z0-9]+(?:-[a-z0-9]+)*\/(?:project\.json|[^/]+\.(?:png|jpe?g|webp|avif|svg|mp4|webm)))$/i.test(path) && !path.split('/').some(part => /^[._]/.test(part));
   async function save(base, changes, message, progress = () => {}) {
     if (!changes.length) throw new Error('Belum ada perubahan untuk disimpan.');
     if (changes.some(item => !managed(item.path))) throw new Error('Lokasi file di luar folder konten.');
@@ -70,3 +70,4 @@ window.HDRGGitHub = (() => {
   }
   return { login, logout: () => { token = ''; }, snapshot, readJSON, save };
 })();
+

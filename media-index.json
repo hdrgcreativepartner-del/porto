@@ -8,7 +8,7 @@ layout: null
     {%- for file in site.static_files -%}
       {%- if file.path contains '/assets/clients/' or file.path contains '/assets/portfolio/' -%}
         {%- assign extension = file.extname | downcase -%}
-        {%- if extension == '.png' or extension == '.jpg' or extension == '.jpeg' or extension == '.webp' or extension == '.avif' or extension == '.svg' or extension == '.json' -%}
+        {%- if extension == '.png' or extension == '.jpg' or extension == '.jpeg' or extension == '.webp' or extension == '.avif' or extension == '.svg' or extension == '.json' or extension == '.mp4' or extension == '.webm' -%}
           {{- comma -}}{{- file.path | jsonify -}}
           {%- assign comma = ',' -%}
         {%- endif -%}
@@ -16,3 +16,4 @@ layout: null
     {%- endfor -%}
   ]
 }
+

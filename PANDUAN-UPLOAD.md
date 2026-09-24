@@ -7,8 +7,8 @@ Panel admin: https://hdrgcreativepartner-del.github.io/porto/admin/
 
 1. Buka panel admin dan hubungkan akun dengan **fine-grained personal access token GitHub**.
 2. Pilih **Portofolio → Proyek baru**, atau klik karya lama untuk mengedit.
-3. Isi judul, deskripsi, kategori, dan klien. Unggah cover serta gambar detail. Gunakan ↑ ↓ untuk mengurutkan.
-4. Klik **Simpan ke GitHub**. Satu pembaruan berisi semua gambar dan metadata akan disimpan ke branch `main`.
+3. Isi judul, deskripsi, kategori, dan klien. Unggah cover serta foto/video detail, atau tempel tautan YouTube lalu klik **Tambahkan**. Gunakan ↑ ↓ untuk mengurutkan media.
+4. Klik **Simpan ke GitHub**. Satu pembaruan berisi semua media dan metadata akan disimpan ke branch `main`.
 5. Tunggu proses publikasi GitHub Pages selesai. Lihat perkembangannya pada tautan **Status publikasi GitHub** di footer admin. Biasanya beberapa menit; durasi tergantung GitHub.
 
 Untuk logo: pilih **Logo klien → Tambah logo klien → Simpan logo ke GitHub**. Nama dan latar logo bisa diubah dari panel.
@@ -32,11 +32,35 @@ Token hanya ada di memori tab, tidak disimpan di localStorage, cookie, repo, ata
 | Logo klien | **800 × 400 px**, kanvas 2:1, ruang aman 10–15% | PNG transparan, WebP, SVG | < 200 KB |
 | Cover portofolio | **1600 × 1200 px**, rasio 4:3 | WebP atau JPG | < 500 KB |
 | Detail / lembar studi kasus | **Lebar 1600 px**, tinggi fleksibel; saran 1000–2400 px per lembar | WebP, JPG, PNG | < 1 MB / lembar |
+| Video landscape | **1920 × 1080 px**, 16:9 | MP4 (H.264 + AAC), WebM | Maks. 25 MB / video |
+| Video portrait / reels | **1080 × 1920 px**, 9:16 | MP4 (H.264 + AAC), WebM | Maks. 25 MB / video |
 | Foto landscape | **1600 × 900 px** atau 1920 × 1080 px | WebP atau JPG | < 500 KB |
 
 Angka di atas adalah rekomendasi untuk website ini, bukan syarat Behance. Detail proyek selalu mempertahankan rasio gambar. Cover memakai crop 4:3, jadi letakkan objek penting di area tengah. Gunakan sRGB dan jangan ekspor seluruh studi kasus sebagai satu gambar yang sangat panjang; pisahkan menjadi beberapa lembar.
 
-Panel menerima PNG, JPG, JPEG, WebP, AVIF, dan SVG. Batas panel: **4 MB per file**, **20 MB total gambar baru per penyimpanan**. Gambar tidak dikompres atau diubah diam-diam oleh panel. Simpan master AI / PSD / PDF di tempat terpisah; unggah hasil ekspornya.
+Panel menerima PNG, JPG, JPEG, WebP, AVIF, SVG, **MP4**, dan **WebM**. Batas panel: **4 MB per gambar**, **25 MB per video**, dan **50 MB total media baru per penyimpanan proyek** (logo klien: 20 MB). Media tidak dikompres atau diubah oleh panel. Simpan master AI / PSD / PDF di tempat terpisah; unggah hasil ekspornya.
+
+## Menambahkan video
+
+1. Buka proyek melalui panel admin, lalu cari bagian **Foto & video**.
+2. Untuk YouTube: tempel URL video, `youtu.be`, Shorts, atau live pada kolom **Atau tambahkan dari YouTube**, lalu klik **Tambahkan**. Gunakan tautan video, bukan kode HTML iframe. Video harus publik atau unlisted dan mengizinkan penyematan; pembatasan usia/wilayah atau hak cipta dari YouTube tetap berlaku.
+3. Untuk file lokal: klik **Unggah foto atau video**, lalu pilih MP4 atau WebM. Rekomendasi MP4 dengan video H.264 dan audio AAC agar kompatibel di lebih banyak perangkat. Untuk video panjang atau file di atas 25 MB, gunakan YouTube atau kompres terlebih dahulu.
+4. Isi **Judul video**, caption opsional, dan pilih **Landscape · 16:9** atau **Portrait · 9:16**. Shorts otomatis memakai format portrait.
+5. Atur urutan foto dan video dengan ↑ ↓. Unggah **cover gambar 1600 × 1200 px** untuk kartu proyek, lalu **Simpan ke GitHub**.
+
+Video memiliki kontrol pemutaran dan tidak memutar suara otomatis. File langsung dimuat saat diperlukan, bukan seluruhnya saat halaman dibuka. Tautan **Buka di YouTube** / **Buka file video** tersedia di halaman proyek.
+
+Jika mengedit `project.json` manual, susunan media ditulis seperti berikut:
+
+```json
+"media": [
+  {"type": "image", "file": "01-opening.webp", "alt": "Visual pembuka"},
+  {"type": "youtube", "url": "https://www.youtube.com/watch?v=VIDEO_ID", "title": "Judul video", "aspect": "landscape"},
+  {"type": "video", "file": "02-showreel.mp4", "title": "Showreel", "aspect": "landscape", "caption": "Cuplikan karya"}
+]
+```
+
+Ganti `VIDEO_ID` dengan ID video YouTube yang sebenarnya. `media` mengatur urutan campuran; metadata `images` lama tetap didukung. File gambar/video lain di folder ikut ditemukan otomatis. Cover ditampilkan di kartu dan tidak diduplikasi ke galeri kecuali dicantumkan. Menghapus media melalui panel baru menghapus file dari versi aktif setelah disimpan; riwayat GitHub tetap menyimpan versi sebelumnya.
 
 ## Alternatif: drop file langsung di GitHub
 
@@ -73,3 +97,4 @@ Kategori: `design` (Brand & Design), `event` (Event Visual), `digital`, `lab` (C
 - Jika panel melaporkan repo berubah: salin teks yang belum disimpan, klik **Muat ulang data**, lalu edit versi terbaru. Panel tidak memaksa menimpa pembaruan orang lain.
 - Jika token ditolak: periksa masa berlaku, repository yang dipilih, Contents write, dan persetujuan organisasi bila diperlukan.
 - Menghapus atau menyembunyikan proyek tidak menghapus riwayat GitHub. File pada repo publik tetap publik.
+

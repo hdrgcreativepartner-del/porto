@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
-EXTENSIONS = {'.png', '.jpg', '.jpeg', '.webp', '.avif', '.svg', '.json'}
+EXTENSIONS = {'.png', '.jpg', '.jpeg', '.webp', '.avif', '.svg', '.json', '.mp4', '.webm'}
 
 class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -30,3 +30,4 @@ class Handler(SimpleHTTPRequestHandler):
 if __name__ == '__main__':
     print('HDRG preview: http://localhost:8000', flush=True)
     ThreadingHTTPServer(('0.0.0.0', 8000), partial(Handler, directory=str(ROOT))).serve_forever()
+
