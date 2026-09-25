@@ -82,10 +82,10 @@
     });
     const outro = el('section', 'case-outro container');
     if (project.note) outro.append(el('p', 'case-note', project.note));
-    const thanks = el('div', 'case-thanks'); thanks.append(el('h2', '', 'Punya ide serupa?'));
+    const thanks = el('div', 'case-thanks'); thanks.append(el('h2', '', 'Wujudkan ide Anda berikutnya.'));
     const actions = el('div', 'case-actions');
     const inquiry = 'Halo HDRG Creative Partner, saya tertarik dengan karya ' + project.title + '. Saya ingin berdiskusi tentang kebutuhan proyek saya.';
-    const contact = link('https://wa.me/' + window.HDRG.whatsapp + '?text=' + encodeURIComponent(inquiry), 'Diskusikan proyek ↗', 'button button-blue'); contact.target = '_blank'; contact.rel = 'noopener noreferrer'; actions.append(contact);
+    const contact = link('https://wa.me/' + window.HDRG.whatsapp + '?text=' + encodeURIComponent(inquiry), 'Bahas kebutuhan Anda ↗', 'button button-blue'); contact.target = '_blank'; contact.rel = 'noopener noreferrer'; actions.append(contact);
     if (project.link) { const external = link(project.link.url, project.link.label + ' ↗', 'text-link'); external.target = '_blank'; external.rel = 'noopener noreferrer'; actions.append(external); }
     const share = el('button', 'text-link case-share', 'Salin tautan proyek ↗'); share.type = 'button';
     const shareStatus = el('p', 'share-status'); shareStatus.setAttribute('role', 'status');
