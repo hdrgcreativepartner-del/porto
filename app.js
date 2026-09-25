@@ -1,7 +1,7 @@
 'use strict';
 
 (() => {
-  let projects = window.HDRG.projects;
+  let projects = [];
   const { whatsapp } = window.HDRG;
   const grid = document.querySelector('#project-grid');
   const menu = document.querySelector('#main-nav');
@@ -148,9 +148,9 @@
   }
 
   document.querySelector('#year').textContent = new Date().getFullYear();
-  document.querySelector('.filter[data-filter="all"] span').textContent = String(projects.length).padStart(2, '0');
+  document.querySelector('.filter[data-filter="all"] span').textContent = '';
   document.querySelectorAll('[data-whatsapp]').forEach(link => { link.href = 'https://wa.me/' + whatsapp; });
-  renderProjects();
+  grid.append(element('p', 'gallery-empty', 'Memuat karya…'));
   window.HDRGCatalog.then(catalog => {
     projects = catalog.projects;
     renderProjects(document.querySelector('.filter.active')?.dataset.filter || 'all');
