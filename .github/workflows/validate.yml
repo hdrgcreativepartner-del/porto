@@ -1,0 +1,38 @@
+name: Validate static site
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  basic-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check core files and JSON syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s index.html
+          test -s site-config.json
+          python3 -m json.tool site-config.json >/dev/null
+          echo "Core files and site-config JSON: OK"
+      - name: Check merge markers and obvious committed secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -n -E '^(<<<<<<< |=======|>>>>>>> )' -- '*.html' '*.css' '*.js' '*.json'; then
+            echo "Unresolved merge conflict markers detected"
+            exit 1
+          fi
+          if git grep -n -E 'gh[pousr]_[A-Za-z0-9]{30,}' -- '*.html' '*.css' '*.js' '*.json' '*.md'; then
+            echo "Possible GitHub token detected"
+            exit 1
+          fi
+          echo "Basic checks passed"
