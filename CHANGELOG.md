@@ -21,3 +21,14 @@ All entries should describe **actual committed changes**, not proposed work.
 - Added responsive typography and restrained hover treatments.
 - Preserved existing original logo, project archive, services, contact and admin integration.
 - Testing: source inspection only; browser/device tests and asset-path verification requested from Gemini. Not deployed to main.
+
+## 2026-10-19 — Editorial v2 continuation (pending review)
+- Featured carousel now waits for `HDRGCatalog`, so it uses the same active portfolio as the project grid; hides gracefully when no media exists.
+- Added a four-stage Our Approach section with responsive layout.
+- Source-level review only; real browser testing and Gemini feedback still pending.
+
+## 2026-10-19 — Editorial continuation QA
+- Preserve featured work and approach positions when applying configured section ordering.
+- Guard carousel input until the live catalogue resolves; prevent vertical gestures from changing slides.
+- Add regression tests for delayed catalogue, keyboard/wrap navigation, touch direction and configured order; 7 tests pass.
+- Browser visual QA remains pending: Chromium installation was not available in this environment.

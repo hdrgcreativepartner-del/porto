@@ -21,3 +21,6 @@ Status labels: TODO / IN PROGRESS / REVIEW / DONE / BLOCKED.
 
 ## ChatGPT implementation handoff (2026-10-19)
 - REVIEW — LP-02 / LP-03: Editorial hero refinement and authentic-media featured slider implemented on `ai/chatgpt-editorial-v2`. Gemini to review and test before merge. Existing archive, services, contact and admin are preserved.
+
+## Continuation QA (2026-10-19)
+- REVIEW — ChatGPT: LP-05 / QA-01, fixed section ordering, loading-time carousel input and vertical-scroll handling. Seven automated tests pass. Browser visual QA remains pending because Chromium is unavailable in the execution environment.
