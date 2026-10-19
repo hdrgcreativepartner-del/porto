@@ -73,7 +73,7 @@
         if (['https:', 'http:'].includes(url.protocol)) link = { url: url.href, label: text(metadata.link.label, 'Lihat proyek') };
       } catch { /* External link is optional. */ }
       return {
-        id, title, categories: projectCategories,
+        id, title, concept: metadata.concept === true, categories: projectCategories,
         year: text(metadata.year, typeof metadata.year === 'number' ? String(metadata.year) : ''),
         client: text(metadata.client), subtitle: text(metadata.subtitle),
         label: text(metadata.label, projectCategories.map(c => labels[c]).join(' · ')),

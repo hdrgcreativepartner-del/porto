@@ -1,0 +1,25 @@
+{
+  "title": "Photo & Video",
+  "client": "",
+  "year": "",
+  "label": "Ilustrasi konsep \u00b7 Photo & Video",
+  "type": "Konsep",
+  "concept": true,
+  "categories": [
+    "digital"
+  ],
+  "cover": "cover.webp",
+  "images": [
+    "cover.webp"
+  ],
+  "scope": [
+    "Photography",
+    "Videography",
+    "Video editing"
+  ],
+  "summary": "Eksplorasi visual untuk layanan Photo & Video HDRG Creative Partner.",
+  "description": "Ilustrasi konsep sementara, bukan dokumentasi proyek klien. Cover, galeri, dan informasi dapat diganti melalui editor admin.",
+  "note": "Ilustrasi dibuat dengan AI untuk demonstrasi visual.",
+  "order": -28,
+  "published": true
+}

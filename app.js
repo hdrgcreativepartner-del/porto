@@ -54,6 +54,7 @@
       const media = element('div', 'project-media media-' + project.layout);
       if (project.cover) media.append(projectImage(project.cover, project.alt));
       else { media.classList.add('media-placeholder'); media.append(element('span', '', project.title)); }
+      if (project.concept) media.append(element('span', 'concept-badge', 'Ilustrasi konsep'));
       if (project.hasVideo) media.append(element('span', 'project-badge', '▶ Video'));
       const arrow = element('span', 'project-arrow');
       arrow.append(icon());
@@ -153,6 +154,9 @@
   grid.append(element('p', 'gallery-empty', 'Memuat karya…'));
   window.HDRGCatalog.then(catalog => {
     projects = catalog.projects;
+    const hero = document.getElementById('hero-concept');
+    const heroProject = projects.find(p => p.id === 'concept-event');
+    if (hero && heroProject?.cover) hero.src = heroProject.cover;
     renderProjects(document.querySelector('.filter.active')?.dataset.filter || 'all');
     if (catalog.clients.length) {
       const logos = document.querySelector('#client-logos');

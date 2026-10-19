@@ -1,0 +1,25 @@
+{
+  "title": "Brand & Design",
+  "client": "",
+  "year": "",
+  "label": "Ilustrasi konsep \u00b7 Brand & Design",
+  "type": "Konsep",
+  "concept": true,
+  "categories": [
+    "design"
+  ],
+  "cover": "cover.webp",
+  "images": [
+    "cover.webp"
+  ],
+  "scope": [
+    "Brand identity",
+    "Graphic design",
+    "Editorial"
+  ],
+  "summary": "Eksplorasi visual untuk layanan Brand & Design HDRG Creative Partner.",
+  "description": "Ilustrasi konsep sementara, bukan dokumentasi proyek klien. Cover, galeri, dan informasi dapat diganti melalui editor admin.",
+  "note": "Ilustrasi dibuat dengan AI untuk demonstrasi visual.",
+  "order": -29,
+  "published": true
+}

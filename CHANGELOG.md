@@ -32,3 +32,9 @@ All entries should describe **actual committed changes**, not proposed work.
 - Guard carousel input until the live catalogue resolves; prevent vertical gestures from changing slides.
 - Add regression tests for delayed catalogue, keyboard/wrap navigation, touch direction and configured order; 7 tests pass.
 - Browser visual QA remains pending: Chromium installation was not available in this environment.
+
+## 2026-10-19 — Concept portfolio and admin access
+- Add three AI concept illustrations as editable portfolio records; keep existing work.
+- Add admin login navigation and a concept checkbox in the existing authenticated editor.
+- Apply reference-inspired blue/paper sections, split hero and editorial typography. Event concept cover drives hero imagery after catalogue load.
+- Seven regression tests pass and modified JS syntax checks pass. Visual browser QA and authenticated upload testing remain pending.
