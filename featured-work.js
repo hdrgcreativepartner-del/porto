@@ -30,16 +30,28 @@
     index.textContent = String(active+1).padStart(2,'0')+' / '+String(items.length).padStart(2,'0');
     prev.disabled = items.length < 2;next.disabled = items.length < 2;
   }
-  const move = step => { active = (active+step+items.length)%items.length;render(); };
+  prev.disabled = true; next.disabled = true;
+  const move = step => { if (items.length < 2) return; active = (active+step+items.length)%items.length;render(); };
   prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
   slider.tabIndex=0;
   slider.addEventListener('keydown',event=>{
     if(event.target!==slider)return;
     if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();move(event.key==='ArrowRight'?1:-1);}
   });
-  let startX=null;
-  slider.addEventListener('touchstart',e=>{startX=e.changedTouches[0]?.screenX ?? null;},{passive:true});
-  slider.addEventListener('touchend',e=>{if(startX===null)return;const dx=(e.changedTouches[0]?.screenX ?? startX)-startX;startX=null;if(Math.abs(dx)>55)move(dx<0?1:-1);},{passive:true});
+  let touchStart = null;
+  slider.addEventListener('touchstart', e => {
+    const touch = e.touches.length === 1 ? e.touches[0] : null;
+    touchStart = touch ? {x: touch.screenX, y: touch.screenY} : null;
+  }, {passive: true});
+  slider.addEventListener('touchcancel', () => { touchStart = null; }, {passive: true});
+  slider.addEventListener('touchend', e => {
+    const touch = e.changedTouches[0];
+    if (!touchStart || !touch) return;
+    const dx = touch.screenX - touchStart.x;
+    const dy = touch.screenY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
+  }, {passive: true});
   const load = window.HDRGCatalog && typeof window.HDRGCatalog.then === 'function'
     ? window.HDRGCatalog
     : Promise.resolve({projects: window.HDRG?.projects || []});
