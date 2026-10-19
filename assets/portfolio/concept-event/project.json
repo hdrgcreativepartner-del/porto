@@ -1,0 +1,25 @@
+{
+  "title": "Motion & Event",
+  "client": "",
+  "year": "",
+  "label": "Ilustrasi konsep \u00b7 Motion & Event",
+  "type": "Konsep",
+  "concept": true,
+  "categories": [
+    "event"
+  ],
+  "cover": "cover.webp",
+  "images": [
+    "cover.webp"
+  ],
+  "scope": [
+    "LED content",
+    "Motion graphic",
+    "Stage visual"
+  ],
+  "summary": "Eksplorasi visual untuk layanan Motion & Event HDRG Creative Partner.",
+  "description": "Ilustrasi konsep sementara, bukan dokumentasi proyek klien. Cover, galeri, dan informasi dapat diganti melalui editor admin.",
+  "note": "Ilustrasi dibuat dengan AI untuk demonstrasi visual.",
+  "order": -30,
+  "published": true
+}

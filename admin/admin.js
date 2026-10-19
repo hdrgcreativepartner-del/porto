@@ -54,7 +54,7 @@
       const open=button('',()=>openProject(project),'project-edit');
       if(coverFile) open.append(image(imageURL(coverFile.path),metadata.title||titleFrom(project.id)));
       else open.append(el('div','project-no-cover','▶ Video')); 
-      const info=el('div','project-card-info');info.append(el('span','project-state',metadata.published===false?'TERSEMBUNYI':'DITAMPILKAN'),el('h3','',metadata.title||titleFrom(project.id)),el('p','',metadata.label||'Portofolio'));
+      const info=el('div','project-card-info');info.append(el('span','project-state',metadata.published===false?'TERSEMBUNYI':metadata.concept?'ILUSTRASI KONSEP':'DITAMPILKAN'),el('h3','',metadata.title||titleFrom(project.id)),el('p','',metadata.label||'Portofolio'));
       open.append(info,el('span','edit-label','Edit proyek ↗'));card.append(open);return card;
     });
     $('#admin-projects').replaceChildren(...cards);
@@ -67,6 +67,7 @@
     form.elements.scope.value=Array.isArray(data.scope)?data.scope.join('\n'):'';
     form.elements.slug.value=project?.id||'';form.elements.slug.readOnly=!!project;
     form.elements.published.checked=data.published!==false;
+    form.elements.concept.checked=data.concept===true;
     document.querySelectorAll('[name="category"]').forEach(input=>input.checked=(data.categories||['design']).includes(input.value));
     const files=(project?.files||[]).filter(item=>mediaPattern.test(item.path));
     gallery=mediaItems(data,files.map(file=>file.path.split('/').pop())).map(item=>{
@@ -162,6 +163,7 @@
         const prefix=basePath+id+'/',metadata={...(editing?.metadata||{})};
         for(const key of ['title','client','year','subtitle','summary','description','note','type','label'])metadata[key]=String(data.get(key)||'').trim();
         metadata.categories=selected;metadata.scope=String(data.get('scope')||'').split('\n').map(line=>line.trim()).filter(Boolean);metadata.order=Number(data.get('order')||0);metadata.published=data.get('published')==='on';
+        metadata.concept=data.get('concept')==='on';
         metadata.cover=selectedCover.name;
         metadata.media=gallery.map((item,index)=>{
           const entry={type:item.type,...(item.type==='youtube'?{url:item.url}:{file:item.name})};

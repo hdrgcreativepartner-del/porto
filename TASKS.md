@@ -24,3 +24,5 @@ Status labels: TODO / IN PROGRESS / REVIEW / DONE / BLOCKED.
 
 ## Continuation QA (2026-10-19)
 - REVIEW — ChatGPT: LP-05 / QA-01, fixed section ordering, loading-time carousel input and vertical-scroll handling. Seven automated tests pass. Browser visual QA remains pending because Chromium is unavailable in the execution environment.
+
+- REVIEW — Concept portfolio, reference-led layout and admin access implemented at owner request. Owner authorized publishing; visual review follows.
