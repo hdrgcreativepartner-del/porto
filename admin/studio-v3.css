@@ -1,0 +1,35 @@
+/* HDRG Studio Online — editorial workspace redesign, phase 1 */
+:root{--blue:#d6b14b;--ink:#f1f2f4;--muted:#a2a9b5;--line:#303641;--paper:#0d1015;--soft:#171c24;--sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+body{background:#0d1015;color:#f1f2f4}
+.admin-header{height:68px;background:#11151c;border-bottom:1px solid #29313b;padding:14px clamp(18px,3vw,48px)}
+.admin-header img{width:125px;filter:brightness(0) invert(1)}
+.admin-header>span{color:#d6b14b;font-size:10px;font-weight:700;letter-spacing:.2em}
+.admin-header>a:last-child{color:#e4e8ef}
+.login-layout{max-width:1360px;min-height:calc(100vh - 68px);gap:clamp(36px,7vw,140px)}
+.login-story h1{font-size:clamp(48px,6vw,90px);font-weight:650;letter-spacing:-.07em}
+.login-story h1 span,.eyebrow{color:#d6b14b}
+.login-story>p:not(.eyebrow){color:#aab1bc;font-size:15px;max-width:460px}
+.login-steps{border-top-color:#343b46;color:#aab1bc}
+.login-card,.form-card{background:#171c24;border:1px solid #323a46;border-radius:16px;box-shadow:0 16px 54px #0002}
+.login-card{padding:clamp(24px,3vw,44px)}
+.login-card h2{font-size:32px;color:#f7f7f8}
+.login-card>p,.field-help,.token-help,.status{color:#aeb6c2}
+.login-card strong{color:#f4f4f5}
+input:not([type=checkbox]),textarea,select{background:#11151c;color:#f1f3f6;border:1px solid #3c4654;border-radius:9px}
+input:focus,textarea:focus,select:focus{border-color:#d6b14b}
+button.primary,.primary{background:#d6b14b!important;color:#151515!important;border-radius:9px!important;font-weight:700}
+button.secondary,.secondary{background:#222a35!important;color:#f3f5f7!important;border:1px solid #3c4552!important;border-radius:9px!important}
+button.quiet,.quiet{color:#b8c0ca!important}
+#studio{max-width:1600px;margin:auto;padding:0 clamp(16px,3vw,48px) 80px}
+.studio-top{padding-top:40px;padding-bottom:26px;border-bottom:1px solid #303641}
+.studio-top h1{font-size:clamp(34px,3.6vw,54px);color:#f5f6f8}
+.studio-tabs{background:#151a22;border:1px solid #303641;border-radius:12px;padding:7px;margin:22px 0}
+.studio-tabs button{border-radius:8px}
+.studio-tabs button.active{background:#303844;color:#fff}
+.panel-heading{margin:28px 0}
+.admin-projects{gap:16px}
+#editor-panel h2,.form-card h3{color:#f5f6f8}
+.form-card{padding:26px}
+label{color:#d6dce4}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline-color:#d6b14b}
+@media(max-width:760px){.admin-header{padding:12px 16px}.admin-header>span{display:none}.login-layout{padding:42px 20px;gap:36px}.login-story h1{font-size:46px}#studio{padding:0 14px 48px}.studio-top{padding-top:24px}}
