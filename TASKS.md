@@ -1,0 +1,20 @@
+# HDRG Collaboration — Task Board
+
+Status labels: TODO / IN PROGRESS / REVIEW / DONE / BLOCKED.
+
+| ID | Status | Owner | Task | Acceptance |
+|---|---|---|---|---|
+| LP-01 | TODO | Gemini | Audit current homepage and existing assets | Inventory of working sections and reusable media |
+| LP-02 | TODO | Gemini | Implement editorial hero and responsive navigation | Original logo, brand palette, mobile usability |
+| LP-03 | TODO | Gemini | Build featured project slider | Real project media, accessible controls, swipe |
+| LP-04 | TODO | Gemini | Refine selected works and service sections | Visual-first, real content, coherent grid |
+| LP-05 | TODO | Gemini | Responsive and interaction fixes | No overflow, usable keyboard navigation |
+| QA-01 | TODO | ChatGPT | Review Gemini pull request | Design, semantics, regressions, assets, content |
+| QA-02 | TODO | ChatGPT | Final refinement recommendations | Actionable prioritized fixes |
+| ADM-01 | BLOCKED | Later phase | Expand visual admin editor | Explicit approval required before implementation |
+
+## Rules
+- Update status and owner before beginning a task.
+- Each PR should reference task IDs and describe tested behavior.
+- No automatic approval or production merge.
+- If Gemini browser cannot push code, share its patch/files for a GitHub-capable workflow.
