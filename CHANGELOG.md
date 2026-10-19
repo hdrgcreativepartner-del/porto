@@ -14,3 +14,10 @@ All entries should describe **actual committed changes**, not proposed work.
 - Functional changes:
 - Tests performed:
 - Known limitations:
+
+## 2026-10-19 — Editorial landing page v2 (feature branch, pending review)
+- Branch: `ai/chatgpt-editorial-v2`.
+- Added editorial featured-work carousel from existing portfolio entries and their real cover paths, with arrows, keyboard and touch navigation; no autoplay.
+- Added responsive typography and restrained hover treatments.
+- Preserved existing original logo, project archive, services, contact and admin integration.
+- Testing: source inspection only; browser/device tests and asset-path verification requested from Gemini. Not deployed to main.

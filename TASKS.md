@@ -18,3 +18,6 @@ Status labels: TODO / IN PROGRESS / REVIEW / DONE / BLOCKED.
 - Each PR should reference task IDs and describe tested behavior.
 - No automatic approval or production merge.
 - If Gemini browser cannot push code, share its patch/files for a GitHub-capable workflow.
+
+## ChatGPT implementation handoff (2026-10-19)
+- REVIEW — LP-02 / LP-03: Editorial hero refinement and authentic-media featured slider implemented on `ai/chatgpt-editorial-v2`. Gemini to review and test before merge. Existing archive, services, contact and admin are preserved.
