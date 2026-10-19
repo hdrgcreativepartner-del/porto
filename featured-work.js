@@ -7,9 +7,7 @@
   const next = document.getElementById('featured-next');
   const index = document.getElementById('featured-index');
   if (!stage || !slider || !prev || !next || !index) return;
-  const source = Array.isArray(window.HDRG?.projects) ? window.HDRG.projects : [];
-  const items = source.filter(p => p && p.title && p.cover && p.id).slice(0, 4);
-  if (!items.length) { slider.closest('.featured-section')?.setAttribute('hidden', ''); return; }
+  let items = [];
   let active = 0;
   const node = (tag, cls, value) => { const e = document.createElement(tag); if(cls)e.className=cls;if(value!==undefined)e.textContent=value;return e; };
   function render() {
@@ -42,5 +40,13 @@
   let startX=null;
   slider.addEventListener('touchstart',e=>{startX=e.changedTouches[0]?.screenX ?? null;},{passive:true});
   slider.addEventListener('touchend',e=>{if(startX===null)return;const dx=(e.changedTouches[0]?.screenX ?? startX)-startX;startX=null;if(Math.abs(dx)>55)move(dx<0?1:-1);},{passive:true});
-  render();
+  const load = window.HDRGCatalog && typeof window.HDRGCatalog.then === 'function'
+    ? window.HDRGCatalog
+    : Promise.resolve({projects: window.HDRG?.projects || []});
+  load.then(catalog => {
+    items = (Array.isArray(catalog?.projects) ? catalog.projects : [])
+      .filter(p => p && p.title && p.cover && p.id).slice(0, 4);
+    if (!items.length) { slider.closest('.featured-section')?.setAttribute('hidden', ''); return; }
+    render();
+  }).catch(() => { slider.closest('.featured-section')?.setAttribute('hidden', ''); });
 })();
