@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "brand": {
+    "logo": "./assets/brand/hdrg-black.png",
+    "name": "HDRG Creative Partner"
+  },
+  "header": {
+    "links": [
+      {
+        "label": "Works",
+        "href": "#work"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "About",
+        "href": "#about"
+      }
+    ],
+    "cta": "Let's Talk"
+  },
+  "hero": {
+    "eyebrow": "INDEPENDENT CREATIVE STUDIO · JEMBER, INDONESIA",
+    "title": "FROM IDEAS TO",
+    "highlight": "VISUAL EXPERIENCES.",
+    "description": "Visual storytelling, motion graphics, design and multimedia experiences for brands, people and events.",
+    "button": "Explore Our Work"
+  },
+  "theme": {
+    "accent": "#3979f6",
+    "background": "#303333",
+    "foreground": "#f4f5f5"
+  },
+  "sections": [
+    {
+      "id": "home",
+      "label": "Hero",
+      "visible": true
+    },
+    {
+      "id": "work",
+      "label": "Selected Works",
+      "visible": true
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "visible": true
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "visible": true
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "visible": true
+    }
+  ]
+}
