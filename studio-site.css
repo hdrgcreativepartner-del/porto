@@ -1,0 +1,44 @@
+/* HDRG / 2026 — premium charcoal editorial portfolio */
+:root{--studio-bg:#303333;--studio-fg:#f4f5f5;--blue:#3979f6;--ink:#f4f5f5;--muted:#b4b9bb;--line:#555a5b;--paper:#303333;--soft:#383d3e}
+body{background:var(--studio-bg);color:var(--studio-fg)}
+.site-header{background:rgba(42,46,47,.96);border-bottom:0;backdrop-filter:blur(22px)}
+.header-inner{border-bottom:1px solid #626869;height:90px}
+.site-header .brand img,.site-footer .brand img{filter:brightness(0) invert(1)}
+.main-nav a{color:#d5d8d9;font-weight:600}
+.main-nav a:hover,.main-nav a[aria-current]{color:#fff}
+.header-contact{border:1px solid #aeb5b5;border-radius:999px;padding:10px 18px;color:#fff}
+.hero{padding-top:68px;padding-bottom:130px;min-height:min(730px,82vh)}
+.hero-top .eyebrow{color:#c9cdcf;letter-spacing:.18em}
+.hero-location{color:#b3b8ba}
+.hero h1{font-size:clamp(58px,8.6vw,150px);font-weight:850;line-height:.94;letter-spacing:-.075em;max-width:1250px;margin-top:90px;text-transform:uppercase}
+.hero h1 span{color:#fff}
+.hero-bottom{margin-top:58px;align-items:center}
+.hero-bottom>p{color:#d0d5d6;font-size:16px;max-width:500px}
+.hero-link{border:1px solid #aab0b2;border-radius:999px;padding:15px 23px;font-weight:650;color:#fff}
+.hero-link span{color:#fff}
+.work-section{border-top:1px solid #646b6b;padding-top:65px}
+.section-heading h2{font-size:clamp(42px,5vw,76px);font-weight:750}
+.section-heading>p,.project-info p,.project-year{color:#c2c8c9}
+.filters{gap:25px}.filter{color:#b7c0c1}.filter.active{color:#fff;border-color:var(--blue)}
+.project-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 22px}
+.project-media{aspect-ratio:3/4;border-radius:18px;background:#d2d4d4}
+.project-card:nth-child(3n+2) .project-media{transform:translateY(20px)}
+.project-info h3{font-size:19px;font-weight:650}
+.project-arrow{background:var(--blue);color:#fff}
+.services-section{background:#383d3e}
+.services-intro h2,.about-layout h2,.contact-copy h2{font-size:clamp(40px,5vw,70px);font-weight:740}
+.service,.service:first-child{border-color:#616768}
+.service-body{color:#c4cacc}.service-tags{color:#e2e5e6}
+.about-copy .about-lead,.about-facts strong{color:#fff}
+.about-copy>p,.experience-names{color:#c7cbcc}
+.contact-section{background:#262b2c;border-color:#565c5d}
+.brief-form input,.brief-form textarea,.brief-form select{background:#363c3d;border:1px solid #747b7c;color:#fff}
+.brief-form input::placeholder,.brief-form textarea::placeholder{color:#bec4c5}
+.site-footer{background:var(--studio-bg)}
+.footer-bottom{border-color:#666b6c}
+.button-blue{background:var(--blue)}
+.button-blue:hover{background:#235ed5}
+.case-image-button{background:#3a4041}
+@media(max-width:960px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-card:nth-child(3n+2) .project-media{transform:none}.hero h1{font-size:clamp(50px,9vw,94px)}}
+@media(max-width:760px){.site-header{background:#303333}.hero{min-height:auto;padding-top:48px;padding-bottom:80px}.hero h1{font-size:clamp(42px,11vw,75px);margin-top:58px}.hero-bottom{margin-top:38px}.project-grid{grid-template-columns:1fr}.project-media{aspect-ratio:4/3}.header-inner{height:72px}.menu-toggle span{background:#fff}.main-nav{background:#303333}.main-nav a{color:#fff}}
+@media(prefers-reduced-motion:reduce){.project-media img{transition:none!important}}
