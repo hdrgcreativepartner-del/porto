@@ -38,3 +38,9 @@ All entries should describe **actual committed changes**, not proposed work.
 - Add admin login navigation and a concept checkbox in the existing authenticated editor.
 - Apply reference-inspired blue/paper sections, split hero and editorial typography. Event concept cover drives hero imagery after catalogue load.
 - Seven regression tests pass and modified JS syntax checks pass. Visual browser QA and authenticated upload testing remain pending.
+
+## 2026-10-20 — Live homepage refinements
+- On `main`, featured slider prioritizes real portfolio items; concept images are fallback only and explicitly labeled.
+- Added visible hero concept-art disclosure to avoid suggesting client documentation.
+- Bumped CSS and featured slider cache versions. User is primary tester; no Gemini review gate.
+- Browser deployment and device QA remain to be verified by owner.
