@@ -40,13 +40,28 @@
       "visible": true
     },
     {
+      "id": "statement",
+      "label": "Studio Statement",
+      "visible": true
+    },
+    {
+      "id": "featured",
+      "label": "Featured Stories",
+      "visible": true
+    },
+    {
       "id": "work",
-      "label": "Selected Works",
+      "label": "Portfolio",
       "visible": true
     },
     {
       "id": "services",
       "label": "Services",
+      "visible": true
+    },
+    {
+      "id": "approach",
+      "label": "Our Approach",
       "visible": true
     },
     {
