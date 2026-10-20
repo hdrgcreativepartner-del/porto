@@ -20,7 +20,7 @@
     img.decoding = 'async'; img.loading = active === 0 ? 'eager' : 'lazy';
     const shade = node('div','featured-shade'); shade.setAttribute('aria-hidden','true');
     const copy = node('div','featured-copy');
-    const kicker = node('span','featured-kicker',(p.label || 'Selected work')+(p.year ? ' / '+p.year : ''));
+    const kicker = node('span','featured-kicker',(p.concept ? 'Ilustrasi konsep · ' : '')+(p.label || 'Selected work')+(p.year ? ' / '+p.year : ''));
     const heading = node('h3','',p.title);
     const summary = node('p','',p.summary || p.subtitle || 'Explore this project from the HDRG portfolio.');
     const link = node('a','featured-cta','View project ↗');
@@ -56,8 +56,10 @@
     ? window.HDRGCatalog
     : Promise.resolve({projects: window.HDRG?.projects || []});
   load.then(catalog => {
-    items = (Array.isArray(catalog?.projects) ? catalog.projects : [])
-      .filter(p => p && p.title && p.cover && p.id).slice(0, 4);
+    const candidates = (Array.isArray(catalog?.projects) ? catalog.projects : [])
+      .filter(p => p && p.title && p.cover && p.id);
+    const authentic = candidates.filter(p => !p.concept);
+    items = (authentic.length ? authentic : candidates).slice(0, 4);
     if (!items.length) { slider.closest('.featured-section')?.setAttribute('hidden', ''); return; }
     render();
   }).catch(() => { slider.closest('.featured-section')?.setAttribute('hidden', ''); });
